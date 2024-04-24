@@ -48,6 +48,12 @@ jobs:
               - 'tfx-pipeline/**'
             modules:
               - 'modules/**'
+      - name: for test 
+        run: |
+          gcloud builds submit --no-source --timeout=60m \
+          --config build/full-pipeline-deployment.yaml \
+          --substitutions $SUBSTITUTIONS \
+          --machine-type=n1-highcpu-8
       - name: trigger cloud build based on pipeline changes
         if: ${{ steps.filter.outputs.pipeline == 'true' }}
         run: |
