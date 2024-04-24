@@ -32,3 +32,13 @@ jobs:
       - name: Set up Cloud SDK
         uses: google-github-actions/setup-gcloud@v2
 
+      - name: check if something changed
+        uses: dorny/paths-filter@v3
+        id: filter
+        with:
+          base: 'main'
+          filters: |
+            pipeline:
+              - 'tfx-pipeline/**'
+            modules:
+              - 'modules/**'
