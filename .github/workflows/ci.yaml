@@ -22,7 +22,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v4
       
       - id: auth
         uses: 'google-github-actions/auth@v2'
@@ -32,9 +32,3 @@ jobs:
       - name: Set up Cloud SDK
         uses: google-github-actions/setup-gcloud@v2
 
-      - name: for test 
-        run: 
-          gcloud builds submit --no-source --timeout=60m \
-          --config build/full-pipeline-deployment.yaml \
-          --substitutions $SUBSTITUTIONS \
-          --machine-type=n1-highcpu-8
