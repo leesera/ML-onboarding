@@ -32,9 +32,33 @@ jobs:
       - name: Set up Cloud SDK
         uses: google-github-actions/setup-gcloud@v2
 
+      - name: check if something changed
+        uses: dorny/paths-filter@v2.11.1
+        id: filter
+        with:
+          base: 'master'        
+          filters: |
+            pipeline:
+              - 'tfx-pipeline/**'
+            modules:
+              - 'modules/**'
       - name: for test 
         run: 
           gcloud builds submit --no-source --timeout=60m \
           --config build/full-pipeline-deployment.yaml \
+          --substitutions $SUBSTITUTIONS \
+          --machine-type=n1-highcpu-8
+      - name: trigger cloud build based on pipeline changes
+        if: ${{ steps.filter.outputs.pipeline == 'true' }}
+        run: |
+          gcloud builds submit --no-source --timeout=60m \
+          --config build/full-pipeline-deployment.yaml \
+          --substitutions $SUBSTITUTIONS \
+          --machine-type=n1-highcpu-8
+      - name: trigger cloud build based on modules changes
+        if: ${{ steps.filter.outputs.modules == 'true' && steps.filter.outputs.pipeline == 'false' }}
+        run: |
+          gcloud builds submit --no-source --timeout=60m \
+          --config build/partial-pipeline-deployment.yaml \
           --substitutions $SUBSTITUTIONS \
           --machine-type=n1-highcpu-8
