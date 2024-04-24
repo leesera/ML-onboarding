@@ -15,7 +15,7 @@ env:
             _REGION=us-central1,\
             _PIPELINE_NAME=sentiment-analysis-tfx,\
             _REPO_URL=https://github.com/leesera/ML-onboarding.git,\
-            _BRANCH=master,\
+            _BRANCH=main,\
             "    
 jobs:
   build:
@@ -33,10 +33,10 @@ jobs:
         uses: google-github-actions/setup-gcloud@v2
 
       - name: check if something changed
-        uses: dorny/paths-filter@v2.11.1
+        uses: dorny/paths-filter@v3
         id: filter
         with:
-          base: 'master'        
+          base: 'main'
           filters: |
             pipeline:
               - 'tfx-pipeline/**'
