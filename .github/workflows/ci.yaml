@@ -10,9 +10,7 @@ on:
   workflow_dispatch:
 
 env:
-  SUBSTITUTIONS: "
-            _PROJECT=${{ secrets.GCP_PROJECT_ID }},_REGION=us-central1,_PIPELINE_NAME=sentiment-analysis-tfx,_REPO_URL=https://github.com/leesera/ML-onboarding.git,_BRANCH=main
-            "    
+  SUBSTITUTIONS: "_PROJECT=${{ secrets.GCP_PROJECT_ID }},_REGION=us-central1,_PIPELINE_NAME=sentiment-analysis-tfx,_REPO_URL=https://github.com/leesera/ML-onboarding.git,_BRANCH=main"    
 jobs:
   build:
     runs-on: ubuntu-latest
