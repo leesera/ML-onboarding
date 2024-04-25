@@ -16,7 +16,7 @@ try:
 except ImportError:
     GOOGLE_CLOUD_PROJECT = ''
 print(f"[*] sera : {GOOGLE_CLOUD_PROJECT}")
-print(f"[*] sera : {gcloud config list account --format 'value(core.account)'}")
+os.system("gcloud config list account --format 'value(core.account)'")
 
 # Specify your GCS bucket name here. You have to use GCS to store output files 
 # when running a pipeline with Kubeflow Pipeline on GCP or when running a job
