@@ -10,7 +10,7 @@ on:
   workflow_dispatch:
 
 env:
-  SUBSTITUTIONS: "_PROJECT=${{ secrets.GCP_PROJECT_ID }},_REGION=us-central1,_PIPELINE_NAME=sentiment-analysis-tfx,_REPO_URL=https://github.com/leesera/ML-onboarding.git,_BRANCH=main"    
+  SUBSTITUTIONS: "_PROJECT=${{ secrets.GCP_PROJECT_ID }},_REGION=us-central1,_PIPELINE_NAME=sentiment-analysis-tfx,_REPO_URL=https://github.com/leesera/ML-onboarding.git,_BRANCH=main,_BUCKET=ml-onbording/"    
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -38,4 +38,4 @@ jobs:
               - 'modules/**'
       - name: for test 
         run: 
-          gcloud builds submit --no-source --timeout=60m --config build/full-pipeline-deployment.yaml --substitutions $SUBSTITUTIONS --machine-type=n1-highcpu-8
+          gcloud builds submit --no-source --timeout=60m --config build/full-pipeline-deployment.yaml --substitutions $SUBSTITUTIONS --machine-type=n1-highcpu-8 --impersonate-service-account 729948466727-compute@developer.gserviceaccount.com
