@@ -15,6 +15,7 @@ try:
         GOOGLE_CLOUD_PROJECT = ''
 except ImportError:
     GOOGLE_CLOUD_PROJECT = ''
+print(f"[*] sera : {GOOGLE_CLOUD_PROJECT}")
 
 # Specify your GCS bucket name here. You have to use GCS to store output files 
 # when running a pipeline with Kubeflow Pipeline on GCP or when running a job
