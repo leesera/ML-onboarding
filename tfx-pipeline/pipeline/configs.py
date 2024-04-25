@@ -1,4 +1,5 @@
 import os
+import nltk
 
 # Pipeline name will be used to identify this pipeline.
 PIPELINE_NAME = 'sentiment-analysis-tfx'
