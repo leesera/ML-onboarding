@@ -13,19 +13,19 @@ steps:
   id: 'Clone Repository'
   
 - name: 'gcr.io/cloud-builders/gsutil'
-  args: ['cp', '*.py', '*.pkl', 'gs://$_PROJECT-vertex-default/$_PIPELINE_NAME/modules']
+  args: ['cp', '*.py', '*.pkl', 'gs://ml-onboarding/$_PROJECT-vertex-default/$_PIPELINE_NAME/modules']
   dir: 'ML-onboarding/modules'
   id: 'Copy Modules'
   waitFor: ['Clone Repository']
 
 - name: 'gcr.io/cloud-builders/gsutil'
-  args: ['cp', '*.csv', 'gs://$_PROJECT-vertex-default/$_PIPELINE_NAME/data']
+  args: ['cp', '*.csv', 'gs://ml-onboarding/$_PROJECT-vertex-default/$_PIPELINE_NAME/data']
   dir: 'ML-onboarding/modules/data'
   id: 'Copy Data'
   waitFor: ['Copy Modules']
 
 - name: 'gcr.io/cloud-builders/gsutil'
-  args: ['cp', '*.txt', 'gs://$_PROJECT-vertex-default/$_PIPELINE_NAME/best_hyperparameters']
+  args: ['cp', '*.txt', 'gs://ml-onboarding/$_PROJECT-vertex-default/$_PIPELINE_NAME/best_hyperparameters']
   dir: 'ML-onboarding/modules/best_hyperparameters'
   id: 'Copy Hyperparameter'
   waitFor: ['Copy Data']
