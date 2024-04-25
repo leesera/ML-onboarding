@@ -22,7 +22,7 @@ except ImportError:
 # This bucket is created automatically when you deploy KFP from marketplace.
 # GCS_BUCKET_NAME = GOOGLE_CLOUD_PROJECT + '-kubeflowpipelines-default'
 GCS_BUCKET_NAME = GOOGLE_CLOUD_PROJECT + '-vertex-default'
-GCS_BUCKET_NAME = "ml-onboarding"
+GCS_BUCKET_NAME = f"ml-onboarding/{GCS_BUCKET_NAME}"
 
 GOOGLE_CLOUD_REGION = 'us-central1'
 
