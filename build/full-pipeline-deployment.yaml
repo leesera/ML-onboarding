@@ -30,7 +30,10 @@ steps:
   id: 'Copy Hyperparameter'
   waitFor: ['Copy Data']
 
-- name: 'gcr.io/$_PROJECT/cb-tfx2:latest'
+- name: 'gcr.io/$_PROJECT/cb-tfx3:latest'
+  entrypoint: 'python'
+
+- name: 'gcr.io/$_PROJECT/cb-tfx3:latest'
   entrypoint: 'tfx'
   args: ['pipeline', 'compile',
           '--pipeline-path', 'kubeflow_v2_runner.py',
@@ -40,7 +43,7 @@ steps:
   id: 'Compile Pipeline'
   waitFor: ['Copy Hyperparameter']
 
-- name: 'gcr.io/$_PROJECT/cb-tfx2:latest'
+- name: 'gcr.io/$_PROJECT/cb-tfx3:latest'
   entrypoint: 'tfx'
   args: ['pipeline', 'create',
           '--pipeline-path', 'kubeflow_v2_runner.py',
@@ -51,7 +54,7 @@ steps:
   id: 'Create Pipeline'
   waitFor: ['Compile Pipeline']  
 
-- name: 'gcr.io/$_PROJECT/cb-tfx2:latest'
+- name: 'gcr.io/$_PROJECT/cb-tfx3:latest'
   entrypoint: 'tfx'
   args: ['run', 'create',
           '--engine', 'vertex',
