@@ -47,6 +47,7 @@ LOCAL_LABEL_ENCODER_FILE = os.path.abspath(os.path.join(os.path.dirname(os.path.
 # Pipelines used.
 # This image will be automatically built by CLI if we use --build-image flag.
 PIPELINE_IMAGE = f'gcr.io/{GOOGLE_CLOUD_PROJECT}/cb-tfx3'
+PIPELINE_IMAGE = f'gcr.io/{GOOGLE_CLOUD_PROJECT}/{PIPELINE_NAME}'
 
 
 # (Optional) Uncomment below to use AI Platform training.
