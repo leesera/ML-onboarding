@@ -46,7 +46,7 @@ LOCAL_LABEL_ENCODER_FILE = os.path.abspath(os.path.join(os.path.dirname(os.path.
 # Following image will be used to run pipeline components run if Kubeflow
 # Pipelines used.
 # This image will be automatically built by CLI if we use --build-image flag.
-PIPELINE_IMAGE = f'gcr.io/{GOOGLE_CLOUD_PROJECT}/{PIPELINE_NAME}'
+PIPELINE_IMAGE = f'gcr.io/{GOOGLE_CLOUD_PROJECT}/cb-tfx3'
 
 
 # (Optional) Uncomment below to use AI Platform training.
